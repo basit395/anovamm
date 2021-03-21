@@ -1,0 +1,23 @@
+{{result1}}
+<br>
+{% for kk in result1 %}
+
+{% for ll in kk.items %}
+
+<span>{{ll.0}} <span>:</span> {{ll.1}}</span>
+<hr>
+{% endfor %}
+
+{% endfor %}
+
+<hr>
+
+{% for kk in result1 %}
+
+
+{{kk.lang}}
+<br>
+{% endfor %}
+
+
+<hr>

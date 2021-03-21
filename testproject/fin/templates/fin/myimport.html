@@ -1,0 +1,25 @@
+
+{% extends 'fin/base.html' %}
+
+
+{% block content %}
+<br>
+
+
+
+{% for art in q1 %}
+
+<p>{{art}}</p>
+<br>
+<p>{{art.sentiment}}</p>
+
+<hr>
+{% endfor %}
+
+
+<p>=======================</p>
+
+{{q1}}
+
+
+{% endblock %}

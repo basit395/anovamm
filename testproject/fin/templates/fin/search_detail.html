@@ -1,0 +1,132 @@
+{% extends 'fin/base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}<title></title> {%endblock%}
+
+{% block content %}
+
+
+  <br>
+  <div class="container">
+
+<div class="row mt-3 ">
+  <div class="col-6">
+    <div class="jumbotron">
+      <h4 class="display-6" style="color:tomato;font-family:verdana;"><b>You are in <span style="color:tomato;font-family:verdana;"">{{searchnow.searchname}}</span> Search Page</b></h4>
+    </div>
+    <h3></h3>
+  </div>
+  <div class="col-6">
+    <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th class="text-center">Project Name</th>
+            <th class="text-center">Creation Date</th>
+            <th class="text-center">Note</th>
+          </tr>
+          <tr>
+            <td class="border text-center"><a href="{% url 'projectdetail' pk=searchnow.project.pk %}">{{searchnow.project}}</a></td>
+            <td class="border text-center">{{searchnow.creationdate}}</td>
+            <td class="border text-center">{{searchnow.note}}</td>
+          </tr>
+    </table>
+    <button type="button" class="btn btn-danger btn-sm">
+      <a href="{% url 'searchdelete' pk=searchnow.pk %}" class="text-light">Delete </a>
+      <span class="sr-only">unread messages</span>
+    </button>
+    <button type="button" class="btn btn-primary btn-sm"><a href="{% url 'searchupdate' pk=searchnow.id %}" class="text-light">Update</a></button>
+    <button type="button" class="btn btn-info btn-sm">
+      <a href="{% url 'searchrun2' pk=searchnow.pk %}" class="text-light">Run Search </a>
+      <span class="sr-only">unread messages</span>
+    </button>
+  </div>
+</div>
+<hr>
+
+
+<div class="row">
+  <div class="col-2">
+    <div class="row">
+      <div class="card text-white bg-info " >
+        <div class="card-header" style="color:black;font-family:verdana;">Impression Report</div>
+        <div class="card-body">
+          <h5 class="card-title"></h5>
+          <p class="card-text">{% for ii in impr%}
+            {{ii.impression}}
+            {{ii.Total}}
+            <br>
+          {% endfor %}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="card text-white bg-info mt-1" >
+          <div class="card-header " style="color:black;font-family:verdana;">Language Report</div>
+           <div class="card-body">
+             <h5 class="card-title"></h5>
+             <p class="card-text">{% for ii in languager%}
+             {{ii.lang}}
+             {{ii.Total}}
+              <br>
+              {% endfor %}</p>
+          </div>
+       </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="col-10">
+    {% if searchnow.search_texts.all %}
+
+    <table class="table ">
+        <thead class="thead-light">
+      <tr>
+        <th class="text-center">No</th>
+        <th class="text-center">Text</th>
+        <th class="text-center">Impression</th>
+        <th class="text-center">Creation Date</th>
+        <th class="text-center">Language</th>
+        <th class="text-center">Source</th>
+      </tr>
+      {% for text  in searchnow.search_texts.all %}
+      <tr>
+        <td class="border text-center">{{forloop.counter}}</td>
+        <td class="border text-center"><a href="">{{text.mytext|truncatewords:20}}</a></td>
+        {% if text.impression|stringformat:"s"  == 'Positive'  %}
+        <strong><td class="border text-center text-success">{{text.impression}}</td></strong>
+        {% endif %}
+        {% if text.impression|stringformat:"s"  == 'Negative'  %}
+        <strong><td class="border text-center text-danger">{{text.impression}}</td></strong>
+        {% endif %}
+        {% if text.impression|stringformat:"s"  == 'Neutral'  %}
+        <strong><td class="border text-center text-warning">{{text.impression}}</td></strong>
+        {% endif %}
+        <td class="border text-center">{{text.creationdate}}</td>
+        <td class="border text-center">{{text.lang}}</td>
+        <td class="border text-center">{{text.source}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  {% endif %}
+</div>
+</div>
+
+
+
+
+
+
+
+<hr>
+
+
+
+
+
+</div>
+{% endblock %}

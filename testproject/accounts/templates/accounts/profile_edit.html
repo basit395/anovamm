@@ -1,0 +1,38 @@
+{% extends 'fin/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+  <br>
+  <div class="container p-3 my-3 bg-dark text-white">
+
+
+<div class="row">
+<div class="col-4 "></div>
+
+
+
+<div class="col-4">
+
+
+<div class="card text-white bg-info mt-5 " style="max-width: 18rem;">
+  <h2>Edit</h2>
+    <form method="post" novalidate>
+      {% csrf_token %}
+
+        {{ userform }}
+          {{ profileform }}
+    
+      <button type="submit">Save</button>
+
+    </form>
+
+  </div>
+
+  </div>
+</div>
+</div>
+
+
+{% endblock %}

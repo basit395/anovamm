@@ -1,0 +1,220 @@
+
+{% extends 'fin/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container ">
+
+  <button> <a href="{% url 'admin:index'%} "> aaaaaaa </a>  </button>
+
+  <span class="glyphicon  glyphicon-user"></span>
+
+<div class="row bg-info">
+  <div class="col-4">
+
+  </div>
+
+  <div class="col-4">
+    <h1 class="mt-5 text-warning">Media Monitoring</h1>
+    {{fre5.count}}
+    <hr>
+  </div>
+
+  <div class="col-4">
+
+  </div>
+
+
+  </div>
+
+  <hr>
+
+  <div class="row">
+
+  <div class="col-3 ">
+
+      <div class="bg-light">
+
+
+          <form class="text-center"  method="GET">
+
+            {{myfilter.form|crispy}}
+            <input type="submit" name="" value="Search">
+          </form>
+      </div>
+          <br>
+      <p class="text-center">No of results = {{mysearch.count}}</p>
+  </div>
+
+
+
+
+  <div class="col-3 ">
+      <p class="text-center text-danger">Language Report</p>
+      <hr>
+      <table class="table mt-4 bg-light">
+          <thead class="thead-dark">
+        <tr>
+
+          <th class="text-center">Language<th>
+          <th class="text-center">No</th>
+
+        </tr>
+
+        {% for xx in languager %}
+        <tr>
+        <td class="border text-center">{{xx.lang}}</td>
+        <td class="border text-center">{{xx.Total}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+
+
+  <br>
+
+
+  </div>
+
+  <div class="col-3 ">
+
+<p class="text-center text-danger">Locations Report</p>
+<hr>
+
+<table class="table mt-4 bg-secondary">
+    <thead class="thead-dark">
+  <tr>
+
+    <th class="text-center">Location<th>
+    <th class="text-center">No</th>
+
+  </tr>
+
+{% for xx in locationr %}
+  <tr>
+  <td class="border text-center">{{xx.location}}</td>
+  <td class="border text-center">{{xx.Total}}</td>
+  </tr>
+{% endfor %}
+</table>
+
+  </div>
+
+
+<div class="col-3">
+<p class="text-center text-danger">Impression Report</p>
+<hr>
+<table class="table mt-4 bg-light">
+    <thead class="thead-dark">
+  <tr>
+
+    <th class="text-center">Impression<th>
+    <th class="text-center">No</th>
+
+  </tr>
+
+{% for gg in impr %}
+  <tr>
+  <td class="border text-center">{{gg.impression}}</td>
+  <td class="border text-center">{{gg.Total}}</td>
+  </tr>
+{% endfor %}
+</table>
+
+
+
+
+
+
+  </div>
+
+</div>
+<hr>
+{{posall.count}}
+<br>
+{{negall.count}}
+<br>
+{{pos.count}}
+<br>
+{{neg.count}}
+<hr>
+{{poslist.count}}
+<hr>
+{{emotionnull.count}}
+<hr>
+
+<table class="table mt-4 bg-light">
+    <thead class="thead-dark">
+  <tr>
+
+    <th class="text-center">Emotion<th>
+    <th class="text-center">Count</th>
+
+  </tr>
+
+{% for gg in emall %}
+  <tr>
+  <td class="border text-center">{{gg.emotion}}</td>
+  <td class="border text-center">{{gg.Total}}</td>
+  </tr>
+{% endfor %}
+</table>
+
+
+
+<hr>
+  {% if mysearch %}
+
+<table class="table bg-light">
+    <thead class="thead-dark">
+  <tr>
+    <th class="text-center">Text</th>
+    <th class="text-center">Impression</th>
+
+
+
+  </tr>
+  {% for customer in opps %}
+  <tr>
+  <td class="border text-center">{{customer.mytext}}</td>
+  <td class="border text-center">{{customer.impression}}</td>
+
+  </tr>
+  {% endfor %}
+</table>
+
+{% endif %}
+
+<div class="pagination">
+
+{% if opps.paginator.num_pages > 1 %}
+
+    {% if opps.has_previous %}
+
+        <a href="?page={{ opps1.previous_page_number }}">previous</a>
+
+    {% endif %}
+
+    <span class="mx-1">Page {{ opps.number }} of {{ opps.paginator.num_pages }}</span>
+
+    {% if opps.has_next %}
+
+        <a href="?page={{ opps1.next_page_number }}">next</a>
+
+    {% endif %}
+
+{% endif %}
+
+
+
+
+
+</div>
+
+<hr>
+
+
+
+
+</div>
+  </body>
+{% endblock %}

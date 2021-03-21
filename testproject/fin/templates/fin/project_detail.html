@@ -1,0 +1,91 @@
+{% extends 'fin/base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}<title></title> {%endblock%}
+
+{% block content %}
+
+
+  <br>
+  <div class="container">
+
+
+
+
+<table class="table mt-4">
+    <thead class="thead-dark">
+  <tr>
+
+    <th class="text-center">Project Name</th>
+    <th class="text-center">Creation Date</th>
+    <th class="text-center">Note</th>
+
+
+  </tr>
+
+  <tr>
+
+  <td class="border text-center">{{project.projectname}}</td>
+  <td class="border text-center">{{project.creationdate}}</td>
+  <td class="border text-center">{{project.note}}</td>
+
+
+
+  </tr>
+
+</table>
+
+<button type="button" class="btn btn-success btn-sm">
+
+  <a href="{% url 'searchnew' pk=project.pk %}" class="text-light">Add New Search </a>
+  <span class="sr-only">unread messages</span>
+</button>
+
+
+<br>
+
+<button type="button" class="btn btn-danger btn-sm">
+
+  <a href="{% url 'projectdelete' pk=project.pk %}" class="text-light">Delete </a>
+  <span class="sr-only">unread messages</span>
+</button>
+
+<button type="button" class="btn btn-link"><a href="{% url 'projectupdate' pk=project.id %}">Update</a></button>
+
+<hr>
+
+{% if project.project_searches.all %}
+
+<div class="p-1 mb-2 mt-5 bg-warning text-dark d-flex justify-content-center"><h5 >List Of Searches</h5></div>
+<table class="table mt-1">
+    <thead class="thead-light">
+  <tr>
+
+    <th class="text-center">Project Name</th>
+    <th class="text-center">Creation Date</th>
+    <th class="text-center">Note</th>
+    <th class="text-center">No Of Texts</th>
+  </tr>
+{% for search in project.project_searches.all %}
+  <tr>
+
+    <td class="border text-center"><a href="{% url 'searchdetail' pk=search.id %}">{{search.searchname}}</a></td>
+    <td class="border text-center">{{search.creationdate}}</td>
+    <td class="border text-center">{{search.note}}</td>
+    <td class="border text-center">{{search.search_texts.count}}</td>
+
+  </tr>
+{% endfor %}
+</table>
+{% else%}
+
+<h5>There is no Searches</h5>
+
+{% endif %}
+
+
+</div>
+
+
+{% endblock %}

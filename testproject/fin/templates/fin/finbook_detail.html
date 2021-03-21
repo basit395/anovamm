@@ -1,0 +1,70 @@
+{% extends 'fin/base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}<title>Transaction</title> {%endblock%}
+
+{% block content %}
+
+
+
+
+  <br>
+  <div class="container">
+
+<div class="row">
+<div class="column ">
+
+
+
+
+</div>
+
+
+
+<div class="column">
+
+
+
+</div>
+<table class="table mt-4">
+    <thead class="thead-dark">
+  <tr>
+
+    <th class="text-center">Discreption</th>
+    <th class="text-center">Clarification</th>
+    <th class="text-center">Transaction</th>
+    <th class="text-center">Amount</th>
+    <th class="text-center">Transaction Date</th>
+    <th class="text-center">Category</th>
+    <th class="text-center">Department</th>
+    <th class="text-center">Sub Department</th>
+    <th class="text-center">Source</th>
+    <th class="text-center">Note</th>
+  </tr>
+
+
+  <tr>
+  <td class="border text-center">{{finbook.description}}</td>
+  <td class="border text-center">{{finbook.clarification}}</td>
+  <td class="border text-center">{{finbook.transactionc}}</td>
+  <td class="border text-center">{{finbook.amount}}</td>
+  <td class="border text-center">{{finbook.transactiondate}}</td>
+  <td class="border text-center">{{finbook.category}}</td>
+  <td class="border text-center">{{finbook.department}}</td>
+  <td class="border text-center">{{finbook.subdepartment}}</td>
+  <td class="border text-center">{{finbook.incomesource}}</td>
+  <td class="border text-center">{{finbook.note}}</td>
+  </tr>
+
+</table>
+
+<br>
+
+<div class="column"></div>
+
+
+</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+{% load crispy_forms_tags %}
+<html lang="en" dir="ltr">
+  <head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+  {% block title %} {%endblock%}
+
+
+
+</head>
+  <body>
+
+
+  <div class="container mt-2">
+
+
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary ">
+  <a class="navbar-item text-light h5" href="{% url 'home' %} " >Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link text-light h5" href="{% url 'projectlist' %}">Projects <span class="sr-only">(current)</span></a>
+      </li>
+
+      <li class="nav-item active">
+        <a class="nav-link text-light h5" href="">About Us</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link text-light h5" href="">Pricing<span class="sr-only">(current)</span></a>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-primary h5" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Sales
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'home' %}">Opportunities</a>
+          <a class="dropdown-item" href="{% url 'home' %}">Post Opportunities</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#"></a>
+        </div>
+      </li>
+
+<!-- operation start -->
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle text-primary h5" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    aaa
+  </a>
+  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+    <a class="dropdown-item" href="{% url 'home' %}">aaa</a>
+    <a class="dropdown-item" href="{% url 'home' %}">aaa</a>
+
+
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="{% url 'home' %}">aa</a>
+    <a class="dropdown-item" href="{% url 'home' %}">aa</a>
+  </div>
+</li>
+
+
+
+{% if user.username %}
+<button  class="btn btn-outline-primary " style="font-weight: bold;text-align:right;">{{user.username}}</a></button>
+<a class="nav-link text-primary h5 " style="font-weight: bold;text-align:right;" href="{% url 'logout' %}">Logout<span class="sr-only">(current)</span></a>
+{% else %}
+<a class="nav-link text-primary h5 p-2" href="{% url 'login' %}">Login<span class="sr-only">(current)</span></a>
+<a class="nav-link text-primary h5 p-2" href="{% url 'accounts:signup' %}">Signup<span class="sr-only">(current)</span></a>
+{% endif %}
+{% if user.username %}
+<button  class="btn btn-outline-primary " style="font-weight: bold;text-align:right;">{{user.username}}</a></button>
+<a class="nav-link text-primary h5 " style="font-weight: bold;text-align:right;" href="{% url 'logout' %}">Logout<span class="sr-only">(current)</span></a>
+{% else %}
+<a class="nav-link text-primary h5 p-2" href="{% url 'login' %}">Login<span class="sr-only">(current)</span></a>
+<a class="nav-link text-primary h5 p-2" href="{% url 'accounts:signup' %}">Signup<span class="sr-only">(current)</span></a>
+{% endif %}
+
+
+
+{% if user.username %}
+<button  class="btn btn-outline-warning " style="font-weight: bold;text-align:right;">{{user.username}}</a></button>
+<a class="nav-link text-dark h5 " style="font-weight: bold;text-align:right;" href="{% url 'logout' %}">Logout<span class="sr-only">(current)</span></a>
+{% else %}
+<a class="nav-link text-success h5 p-2" href="{% url 'login' %}">Login<span class="sr-only">(current)</span></a>
+<a class="nav-link text-success h5 p-2" href="{% url 'accounts:signup' %}">Signup<span class="sr-only">(current)</span></a>
+{% endif %}
+
+
+
+</nav>
+
+
+
+
+</div>
+
+{% block content %}
+  {% endblock %}
+
+
+</script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
+{% block javascript %}
+
+{% endblock %}
+
+
+  </body>
+</div>
+
+</html>

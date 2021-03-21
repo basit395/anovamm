@@ -1,0 +1,31 @@
+{% extends 'fin/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container">
+
+  <br>
+
+<h6>Start a  Search</h6>
+
+
+
+
+    <form method="POST" class="post-form">
+
+    {% csrf_token %}
+    <form  method="post">
+    <label for="team_name">Enter name: </label>
+    <input id="team_name" type="text" name="name_field" value="Default name for team.">
+    <input type="submit" value="OK">
+    </form>
+
+    <button type="submit" class="btn btn-primary mb-2">Save</button>
+
+    </form>
+
+</div>
+
+{% endblock %}

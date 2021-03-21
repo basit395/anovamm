@@ -1,0 +1,41 @@
+{% extends 'fin/base.html' %}
+
+
+{% block content %}
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap" rel="stylesheet">
+
+<div class="container">
+
+
+    <h2 class="display-2 m-5" style="color:black;font-family: 'Berkshire Swash', cursive;"><b>Anova PlatForm </b></h2>
+
+
+
+
+
+  <div class="jumbotron mt-3">
+    <h2 class="display-5" style="color:tomato;font-family:verdana;"><b>Welcome To Anova PlatForm For Media Monitoring</b></h2>
+    <p class="lead">Monitor media coverage across online, print, broadcast, and social media with an easy-to-use tool..</p>
+    <hr class="my-4">
+    <p  ></p>
+    <p class="lead">
+      {% if myprojects %}
+      <a class="btn btn-primary btn-lg" href="{% url 'projectlist' %}" role="button">Go To My Projects</a>
+      {% else %}
+
+      <a class="btn btn-primary btn-lg" href="#" role="button">Create Your First Project</a>
+      {% endif %}
+    </p>
+  </div>
+
+
+
+</div>
+
+
+
+
+
+{% endblock %}
